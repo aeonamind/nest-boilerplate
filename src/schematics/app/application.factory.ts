@@ -10,7 +10,7 @@ import {
 } from '@angular-devkit/schematics';
 import { Answers, prompt } from 'inquirer';
 import { basename, parse } from 'path';
-import { Observable } from 'rxjs';
+import { Observable } from '@angular-devkit/core/node_modules/rxjs/internal/Observable';
 import { DEFAULT_DESCRIPTION, DEFAULT_VERSION } from '../default';
 import schema from './schema';
 

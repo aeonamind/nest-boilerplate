@@ -1,14 +1,14 @@
 {
   "name": "@nguyen1512vl/nest-boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A boilerplate schematics for nestjs",
   "scripts": {
-    "build": "rm -rf dist && tsc --project tsconfig.json && pnpm copy:collection && pnpm copy:schematics",
+    "build": "rm -rf dist && tsc --project tsconfig.json && npm run copy:collection && npm run copy:schematics",
     "copy:collection": "cpx src/collection.json dist && cpx 'src/schematics/**/schema.json' dist/schematics",
     "copy:schematics": "cpx 'src/schematics/**/templates/**/*.*' dist/schematics && cpx 'src/schematics/**/templates/**/.*' dist/schematics && cpx 'src/schematics/**/templates/**/.*/**' dist/schematics",
     "clean": "gulp clean:src",
     "lint": "eslint '{src,test}/**/*.ts' --fix",
-    "prepublish": "pnpm build",
+    "prepublish": "npm run build",
     "publish:public": "npm publish --access public",
     "update": "npm-check -u"
   },
