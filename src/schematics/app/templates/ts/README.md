@@ -1,75 +1,75 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Installation
 
 ```bash
-$ <%= packageManager %> install
+yarn
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ <%= packageManager %> run start
+$ yarn run start
 
 # watch mode
-$ <%= packageManager %> run start:dev
+$ yarn run start:dev
 
 # production mode
-$ <%= packageManager %> run start:prod
+$ yarn run start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ <%= packageManager %> run test
+$ yarn run test
 
 # e2e tests
-$ <%= packageManager %> run test:e2e
+$ yarn run test:e2e
 
 # test coverage
-$ <%= packageManager %> run test:cov
+$ yarn run test:cov
 ```
 
-## Support
+## Migration
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# generate migration
+$ yarn migrate:generate
 
-## Stay in touch
+# create new migration
+$ yarn migrate:create
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# run migration
+$ yarn migrate:up
 
-## License
+# revert migration
+$ yarn migrate:down
+```
 
-  Nest is [MIT licensed](LICENSE).
+## Steps to modify database
+
+### 1. Generate migration file
+
+After making any changes to the database schema, you should create a new migration file using command below. This command will generate a new migration file based on the changes you want to make.
+
+```bash
+yarn migrate:generate
+```
+
+### 2. Review and lock migration in down direction
+
+Once the migration file is generated, navigate to the newly created migration file located in the migrations directory. Review the contents of the migration file to ensure that it includes the correct changes.
+
+After reviewing the migration file, it's important to lock down the migration to prevent accidental execution in the down direction. This step ensures that migrations can only be applied in the up direction.
+
+### 3. Run migration
+
+After locking down the migration file, you can proceed to execute the migration using the command below. This command will apply the changes specified in the migration file to the database schema.
+
+```bash
+yarn migrate:up
+```
+
+### 4. Start the application
+
+With the database changes successfully applied, you can now start the application and run the new functionality or features that utilize the modified database schema.

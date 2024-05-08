@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: server
+    init: true
+    build:
+      context: .
+      target: final
+    ports:
+      - ${NODE_PORT}:${NODE_PORT}
+    env_file:
+      - .env
+    environment:
+      MYSQL_HOST: ${DOCKER_MYSQL_HOST}
+    restart: unless-stopped
+    networks:
+      - default-net
+
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - default-net
+
+volumes:
+  mysql_data:
+
+networks:
+  default-net:
+    driver: bridge

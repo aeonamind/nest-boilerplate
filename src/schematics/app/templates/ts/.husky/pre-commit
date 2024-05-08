@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+. "$(dirname -- "$0")/_/husky.sh"
+. "$(dirname -- "$0")/email-check"
+
+echo "[INFO] Checking typing"
+
+npx tsc
+
+echo "[INFO] Lint-staged"
+
+npx lint-staged
