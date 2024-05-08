@@ -18,6 +18,10 @@
   ],
   "author": "Trung Nguyen Nguyen",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nguyen1512vl/nest-boilerplate.git"
+  },
   "schematics": "./dist/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^10.1.2",
