@@ -1,0 +1,40 @@
+{
+  "name": "@ackerman/nest-boilerplate",
+  "version": "0.0.1",
+  "description": "A boilerplate schematics for nestjs",
+  "scripts": {
+    "postbuild": "pnpm copy:collection && pnpm copy:schematics",
+    "build": "rm -rf dist && tsc --project tsconfig.json",
+    "copy:collection": "cpx src/collection.json dist && cpx 'src/schematics/**/schema.json' dist/schematics",
+    "copy:schematics": "cpx 'src/schematics/**/templates/**/*.*' dist/schematics && cpx 'src/schematics/**/templates/**/.*' dist/schematics && cpx 'src/schematics/**/templates/**/.*/**' dist/schematics",
+    "clean": "gulp clean:src",
+    "lint": "eslint '{src,test}/**/*.ts' --fix",
+    "prepublish": "pnpm build",
+    "publish": "pnpm publish --access public",
+    "update": "npm-check -u"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "Trung Nguyen Nguyen",
+  "license": "MIT",
+  "schematics": "./dist/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^10.1.2",
+    "@angular-devkit/schematics": "^10.1.2",
+    "inquirer": "^7.3.3",
+    "rxjs": "^6.6.3"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^7.3.1",
+    "@types/node": "^14.11.1",
+    "cpx": "^1.5.0",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "npm-check": "^5.9.2",
+    "prettier": "^3.2.5",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "main": "gulpfile.js"
+}
