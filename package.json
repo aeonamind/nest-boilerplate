@@ -1,9 +1,10 @@
 {
-  "name": "@nguyen1512vl/nest-boilerplate",
-  "version": "0.0.3",
+  "name": "@koujiman/nest-boilerplate",
+  "version": "0.0.1",
   "description": "A boilerplate schematics for nestjs",
   "scripts": {
-    "build": "rm -rf dist && tsc --project tsconfig.json && npm run copy:collection && npm run copy:schematics",
+    "postbuild": "npm run copy:collection && npm run copy:schematics",
+    "build": "rm -rf dist && tsc --project tsconfig.json",
     "copy:collection": "cpx src/collection.json dist && cpx 'src/schematics/**/schema.json' dist/schematics",
     "copy:schematics": "cpx 'src/schematics/**/templates/**/*.*' dist/schematics && cpx 'src/schematics/**/templates/**/.*' dist/schematics && cpx 'src/schematics/**/templates/**/.*/**' dist/schematics",
     "clean": "gulp clean:src",
@@ -19,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nguyen1512vl/nest-boilerplate.git"
+    "url": "git+https://github.com/koujiman/nest-boilerplate.git"
   },
   "schematics": "./dist/collection.json",
   "dependencies": {
